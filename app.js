@@ -36,7 +36,7 @@ form.addEventListener('submit', async (event) => {
     if (typeof data.score !== 'number' || !Number.isFinite(data.score) || data.score < 0 || data.score > 1) {
       throw new Error('模型返回了无法识别的分数，请稍后重试。');
     }
-    scoreValue.textContent = (data.score * 200).toFixed(1);
+    scoreValue.textContent = (data.score * 1000).toFixed(1);
     result.hidden = false;
     message.textContent = '计算完成。';
     message.className = 'message success';
