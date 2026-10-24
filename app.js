@@ -1,4 +1,5 @@
 const MODEL_SCORE_URL = 'https://8000-i3vbxxg85gzky2hx9rirg-3b3f3f37.us5.manus.computer/score';
+const REFERENCE_RATE = 0.10;
 const form = document.querySelector('#score-form');
 const queryInput = document.querySelector('#query');
 const passageInput = document.querySelector('#passage');
@@ -6,6 +7,15 @@ const button = document.querySelector('#submit');
 const message = document.querySelector('#message');
 const result = document.querySelector('#result');
 const scoreValue = document.querySelector('#score-value');
+
+// Odds-ratio display index: monotonic in the model output, with 50 at p=10%.
+// This is a ranking index, not a calibrated probability.
+function toRankingIndex(rawScore) {
+  const p = Math.min(1 - 1e-9, Math.max(1e-9, rawScore));
+  const baselineOdds = REFERENCE_RATE / (1 - REFERENCE_RATE);
+  const relativeOdds = (p / (1 - p)) / baselineOdds;
+  return 100 * relativeOdds / (1 + relativeOdds);
+}
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -36,7 +46,7 @@ form.addEventListener('submit', async (event) => {
     if (typeof data.score !== 'number' || !Number.isFinite(data.score) || data.score < 0 || data.score > 1) {
       throw new Error('模型返回了无法识别的分数，请稍后重试。');
     }
-    scoreValue.textContent = (data.score * 100).toFixed(1);
+    scoreValue.textContent = toRankingIndex(data.score).toFixed(1);
     result.hidden = false;
     message.textContent = '计算完成。';
     message.className = 'message success';
