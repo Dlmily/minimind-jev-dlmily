@@ -20,7 +20,7 @@ button:disabled { cursor: wait; opacity: .65; }
 .result { margin-top: 14px; padding: 22px; border: 1px solid #dfe3df; border-radius: 12px; background: #fff; }
 .result-label { margin: 0; color: #5f6861; font-size: 14px; }
 .score { margin: 5px 0 0; color: #28664d; font-size: 52px; font-weight: 700; line-height: 1.15; letter-spacing: -.04em; }
-.percent { margin-left: 3px; font-size: 24px; }
+.unit { margin-left: 3px; font-size: 24px; }
 .note { margin: 10px 0 0; color: #777e78; font-size: 12px; line-height: 1.5; }
 footer { margin-top: 23px; color: #747a75; font-size: 12px; }
 @media (max-width: 520px) { .page { padding-top: 36px; } form, .result { padding: 17px; } }

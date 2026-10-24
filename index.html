@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="使用 MiniMind Jev 中文模型计算查询与段落的相关性排序参考指数。">
-  <title>MiniMind Jev 排序参考指数</title>
+  <meta name="description" content="使用 MiniMind Jev 中文模型估算查询与段落的相关性分数。">
+  <title>MiniMind Jev 相关性打分</title>
   <link rel="icon" href="./logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -12,8 +12,8 @@
   <main class="page">
     <header>
       <p class="eyebrow">MINIMIND JEV · V0.1</p>
-      <h1>相关性排序参考分</h1>
-      <p class="intro">输入一个查询和一段文本，查看模型会把这段内容排在什么位置。</p>
+      <h1>相关性打分</h1>
+      <p class="intro">输入一个查询和一段文本，看看这段内容是否能回答查询。</p>
     </header>
 
     <form id="score-form">
@@ -28,11 +28,10 @@
 
     <p id="message" class="message" role="status" aria-live="polite"></p>
     <section id="result" class="result" aria-live="polite" hidden>
-      <p class="result-label">排序参考指数（0–100）</p>
-      <p class="score"><span id="score-value">—</span></p>
-      <p class="note">映射公式：100 × 9p / (1 + 8p)，p 为模型原始输出。50 分对应公开基准的 10% 正例率；这是排序指数，不是概率。</p>
+      <p class="result-label">相关性分数</p>
+      <p class="score"><span id="score-value">—</span><span class="unit">‰</span></p>
     </section>
-    <footer>固定同一查询比较不同段落：分数越高，模型越倾向将其排在前面。指数只改变显示尺度，不提升模型判断能力。</footer>
+    <footer>分数越高，表示模型越倾向于认为段落能回答查询。</footer>
   </main>
   <script src="./app.js" defer></script>
 </body>
