@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+:root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #202322; background: #f5f6f4; }
+body { margin: 0; min-height: 100vh; }
+.page { width: min(100% - 32px, 680px); margin: 0 auto; padding: 56px 0 40px; }
+.eyebrow { margin: 0 0 10px; color: #65756b; font-size: 12px; font-weight: 700; letter-spacing: .11em; }
+h1 { margin: 0; font-size: clamp(30px, 6vw, 42px); letter-spacing: -.04em; }
+.intro { margin: 10px 0 30px; color: #646b66; line-height: 1.65; }
+form { padding: 22px; border: 1px solid #dfe3df; border-radius: 12px; background: #fff; }
+label { display: block; margin: 0 0 8px; font-size: 14px; font-weight: 650; }
+input, textarea { display: block; width: 100%; margin: 0 0 20px; padding: 12px 13px; border: 1px solid #d9ded9; border-radius: 7px; outline: none; color: inherit; background: #fff; font: inherit; line-height: 1.5; }
+input:focus, textarea:focus { border-color: #458368; box-shadow: 0 0 0 3px #4583681e; }
+textarea { resize: vertical; }
+button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 7px; color: #fff; background: #28664d; font: inherit; font-weight: 650; cursor: pointer; }
+button:hover { background: #1f563f; }
+button:disabled { cursor: wait; opacity: .65; }
+.message { min-height: 24px; margin: 15px 1px 6px; color: #626962; font-size: 14px; }
+.message.error { color: #a33232; }
+.message.success { color: #28664d; }
+.message.loading { color: #59655c; }
+.result { margin-top: 14px; padding: 22px; border: 1px solid #dfe3df; border-radius: 12px; background: #fff; }
+.result-label { margin: 0; color: #5f6861; font-size: 14px; }
+.score { margin: 5px 0 0; color: #28664d; font-size: 52px; font-weight: 700; line-height: 1.15; letter-spacing: -.04em; }
+.percent { margin-left: 3px; font-size: 24px; }
+.note { margin: 10px 0 0; color: #777e78; font-size: 12px; line-height: 1.5; }
+footer { margin-top: 23px; color: #747a75; font-size: 12px; }
+@media (max-width: 520px) { .page { padding-top: 36px; } form, .result { padding: 17px; } }

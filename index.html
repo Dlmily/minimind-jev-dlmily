@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="使用 MiniMind Jev 中文模型估算查询与段落的相关性分数。">
+  <title>MiniMind Jev 概率打分</title>
+  <link rel="icon" href="./logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">MINIMIND JEV · V0.1</p>
+      <h1>相关性打分</h1>
+      <p class="intro">输入一个查询和一段文本，看看这段内容是否能回答查询。</p>
+    </header>
+
+    <form id="score-form">
+      <label for="query">查询</label>
+      <input id="query" name="query" type="text" maxlength="8000" placeholder="例如：模型使用什么编码器？" required>
+
+      <label for="passage">段落</label>
+      <textarea id="passage" name="passage" rows="7" maxlength="30000" placeholder="粘贴要判断的文本段落" required></textarea>
+
+      <button id="submit" type="submit">计算分数</button>
+    </form>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+    <section id="result" class="result" aria-live="polite" hidden>
+      <p class="result-label">相关性分数</p>
+      <p class="score"><span id="score-value">—</span><span class="percent">%</span></p>
+      <p class="note">这是模型的排序参考分数，不是经过校准的绝对概率。</p>
+    </section>
+    <footer>分数越高，表示模型认为段落越能回答该查询。</footer>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
